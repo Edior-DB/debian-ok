@@ -3,6 +3,12 @@ if ! command -v firefox >/dev/null 2>&1; then
   echo "Warning: Firefox is not installed. The Firefox launcher will not be created."
   rm -f ~/.local/share/applications/Firefox.desktop
 else
+  # Check if Firefox is ESR
+  if firefox --version | grep -qi 'esr'; then
+    FIREFOX_ICON="/usr/share/icons/hicolor/128x128/apps/firefox-esr.png"
+  else
+    FIREFOX_ICON="/usr/share/icons/hicolor/128x128/apps/firefox.png"
+  fi
   mkdir -p ~/.local/share/applications
   if [ ! -w ~/.local/share/applications ]; then
     echo "Error: Cannot write to ~/.local/share/applications."
@@ -15,7 +21,7 @@ Comment=Browse the Web
 Exec=firefox --new-window
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/hicolor/128x128/apps/firefox.png
+Icon=$FIREFOX_ICON
 Categories=GTK;Network;WebBrowser;
 StartupNotify=true
 EOF
