@@ -3,7 +3,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 # Install curl, git, unzip (core tools)
-if [ "$DEBIANOK_OS_ID" = "debian" ]; then
+if [ "$OMAKUB_OS_ID" = "debian" ]; then
   sudo apt install -y curl git unzip
 else
   echo "Unsupported OS for core tools installation."
