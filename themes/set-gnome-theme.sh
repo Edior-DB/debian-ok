@@ -14,3 +14,8 @@ if [ ! -d "$BACKGROUND_DEST_DIR" ]; then mkdir -p "$BACKGROUND_DEST_DIR"; fi
 gsettings set org.gnome.desktop.background picture-uri $BACKGROUND_DEST_PATH
 gsettings set org.gnome.desktop.background picture-uri-dark $BACKGROUND_DEST_PATH
 gsettings set org.gnome.desktop.background picture-options 'zoom'
+
+# Ensure OMAKUB_THEME_COLOR is set for compatibility
+if [ -z "${OMAKUB_THEME_COLOR:-}" ] && [ -n "${DEBIANOK_THEME_COLOR:-}" ]; then
+  OMAKUB_THEME_COLOR="$DEBIANOK_THEME_COLOR"
+fi
