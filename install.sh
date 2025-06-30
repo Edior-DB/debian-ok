@@ -24,16 +24,20 @@ source ~/.local/share/debian-ok/install/terminal/required/app-gum.sh >/dev/null
 source ~/.local/share/debian-ok/install/identification.sh
 
 # Choose package installer (apt or nala)
+
+
+
 if command -v nala >/dev/null 2>&1; then
-  export INSTALLER="nala"
+  INSTALLER='nala'
 else
-  if ~/.local/share/debian-ok/bin/gum confirm "Nala is not installed. Would you like to install and use nala as your package installer? (Recommended for speedier installs)"; then
+  if gum confirm "Do you want to install nala? It works faster..."; then
     sudo apt update && sudo apt install -y nala
-    export INSTALLER="nala"
+    INSTALLER='nala'
   else
-    export INSTALLER="apt"
+    INSTALLER='apt'
   fi
 fi
+export INSTALLER
 
 # Only install if running GNOME session
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then

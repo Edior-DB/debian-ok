@@ -13,15 +13,16 @@ export DEBIANOK_OS_VERSION_ID="$VERSION_ID"
 
 # Setup and export INSTALLER (apt or nala)
 if command -v nala >/dev/null 2>&1; then
-  export INSTALLER="nala"
+  INSTALLER='nala'
 else
-  if ~/.local/share/debian-ok/bin/gum confirm "Nala is not installed. Would you like to install and use nala as your package installer? (Recommended for speedier installs)"; then
+  if gum confirm "Do you want to install nala? It works faster..."; then
     sudo apt update && sudo apt install -y nala
-    export INSTALLER="nala"
+    INSTALLER='nala'
   else
-    export INSTALLER="apt"
+    INSTALLER='apt'
   fi
 fi
+export INSTALLER
 
 # Check if running on Debian 12+
 if [ "$ID" = "debian" ] && [ $(echo "$VERSION_ID >= 12" | bc) -eq 1 ]; then
