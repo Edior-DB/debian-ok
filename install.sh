@@ -8,7 +8,7 @@ last_command=""
 # Improved error reporting: show the failed command and its exit code for easier troubleshooting
 function omakub_error_trap {
   local exit_code=$?
-  echo -e "\nDebian-Ok installation failed!\n  Command: $last_command\n  Exit code: $exit_code\n  You can retry by running: source ~/.local/share/omakub/install.sh"
+  echo -e "\nDebian-Ok installation failed!\n  Command: $last_command\n  Exit code: $exit_code\n  You can retry by running: source ~/.local/share/debian-ok/install.sh"
   while true; do sleep 1; done
 }
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
@@ -16,12 +16,12 @@ trap 'omakub_error_trap' ERR
 
 # Check the distribution name and version and abort if incompatible
 
-source ~/.local/share/omakub/install/check-version.sh
+source ~/.local/share/debian-ok/install/check-version.sh
 # Ask for required tools and user choices
 echo "Get ready ..."
-source ~/.local/share/omakub/install/terminal/required/app-gum.sh >/dev/null
+source ~/.local/share/debian-ok/install/terminal/required/app-gum.sh >/dev/null
 
-source ~/.local/share/omakub/install/identification.sh
+source ~/.local/share/debian-ok/install/identification.sh
 
 # Only install if running GNOME session
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
@@ -32,10 +32,10 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   echo "Installing terminal and desktop tools..."
 
   # Install terminal tools
-  source ~/.local/share/omakub/install/terminal.sh
+  source ~/.local/share/debian-ok/install/terminal.sh
 
   # Install desktop tools and tweaks
-  source ~/.local/share/omakub/install/desktop.sh
+  source ~/.local/share/debian-ok/install/desktop.sh
 
   # Restore normal idle and lock settings
   gsettings set org.gnome.desktop.screensaver lock-enabled true
