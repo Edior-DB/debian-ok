@@ -20,14 +20,7 @@ if ! command -v sudo >/dev/null 2>&1; then
 fi
 
 # Use a here-document for ASCII art (bash/pipe-safe)
-ascii_art="""
- ____        _     _             ____        _    
-|  _ \\  ___| |__ (_)_ __   __ _|  _ \\  ___| | __
-| | | |/ _ \\ '_ \\| | '_ \\ / _ | | | |/ _ \\ |/ /
-| |_| |  __/ | | | | | | | (_| | |_| |  __/   < 
-|____/ \\___|_| |_|_|_| |_|\\__, |____/ \\___|_|\\_\\
-                              |___/                
-"""
+ascii_art=""" Debian-Ok Installer"""
 
 echo -e "$ascii_art"
 echo "=> Debian-Ok is for fresh Debian 12+ (Bookworm or newer) installations only!"
