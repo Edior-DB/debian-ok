@@ -23,6 +23,17 @@ source ~/.local/share/debian-ok/install/terminal/required/app-gum.sh >/dev/null
 
 source ~/.local/share/debian-ok/install/identification.sh
 
+# Choose package installer (apt or nala)
+if command -v nala >/dev/null 2>&1; then
+  if ~/.local/share/debian-ok/bin/gum confirm "Do you want to use nala as your package installer? (Recommended for speedier installs)"; then
+    export INSTALLER="nala"
+  else
+    export INSTALLER="apt"
+  fi
+else
+  export INSTALLER="apt"
+fi
+
 # Only install if running GNOME session
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   # Prevent sleep/lock during installation
@@ -44,17 +55,6 @@ else
   echo "Error: Debian-Ok must be installed from within a GNOME session."
   echo "Please log into GNOME and re-run this installer."
   exit 1
-fi
-
-# Choose package installer (apt or nala)
-if command -v nala >/dev/null 2>&1; then
-  if ~/.local/share/debian-ok/bin/gum confirm "Do you want to use nala as your package installer? (Recommended for speedier installs)"; then
-    export INSTALLER="nala"
-  else
-    export INSTALLER="apt"
-  fi
-else
-  export INSTALLER="apt"
 fi
 
 # Note: For local .deb files, always use 'apt' (nala does not support local .deb installs)
