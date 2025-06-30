@@ -9,8 +9,8 @@ echo "deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 rm -f vscodium-archive-keyring.gpg
 cd -
 
-sudo apt update -y
-sudo apt install -y codium
+sudo $INSTALLER update -y
+sudo $INSTALLER install -y codium
 
 mkdir -p ~/.config/VSCodium/User
 cp ~/.local/share/debian-ok/configs/vscode.json ~/.config/VSCodium/User/settings.json

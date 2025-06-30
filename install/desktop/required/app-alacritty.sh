@@ -2,7 +2,7 @@
 # Alacritty is a GPU-powered and highly extensible terminal. See https://alacritty.org/
 # Install Alacritty
 if [ "$DEBIANOK_OS_ID" = "debian" ]; then
-  sudo apt install -y alacritty
+  sudo $INSTALLER install -y alacritty
 else
   echo "Unsupported OS for Alacritty installation."
   exit 1

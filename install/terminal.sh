@@ -1,10 +1,10 @@
 # Needed for all installers
-sudo apt update -y
-sudo apt upgrade -y
+sudo $INSTALLER update -y
+sudo $INSTALLER upgrade -y
 
 # Install curl, git, unzip (core tools)
 if [ "$DEBIANOK_OS_ID" = "debian" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo apt install -y curl git unzip
+  sudo $INSTALLER install -y curl git unzip
 else
   echo "Unsupported OS for core tools installation."
   exit 1

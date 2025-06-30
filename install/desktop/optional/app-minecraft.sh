@@ -6,7 +6,7 @@ if command -v minecraft-launcher >/dev/null 2>&1; then
   exit 0
 fi
 
-sudo apt install -y openjdk-8-jdk
+sudo $INSTALLER install -y openjdk-8-jdk
 
 cd /tmp
 wget https://launcher.mojang.com/download/Minecraft.deb

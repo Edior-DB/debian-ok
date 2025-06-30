@@ -45,3 +45,16 @@ else
   echo "Please log into GNOME and re-run this installer."
   exit 1
 fi
+
+# Choose package installer (apt or nala)
+if command -v nala >/dev/null 2>&1; then
+  if ~/.local/share/debian-ok/bin/gum confirm "Do you want to use nala as your package installer? (Recommended for speedier installs)"; then
+    export INSTALLER="nala"
+  else
+    export INSTALLER="apt"
+  fi
+else
+  export INSTALLER="apt"
+fi
+
+# Note: For local .deb files, always use 'apt' (nala does not support local .deb installs)

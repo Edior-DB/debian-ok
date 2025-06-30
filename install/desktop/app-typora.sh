@@ -2,8 +2,8 @@
 if ! command -v typora >/dev/null 2>&1; then
   wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
   sudo add-apt-repository -y 'deb https://typora.io/linux ./'
-  sudo apt update -y
-  sudo apt install -y typora
+  sudo $INSTALLER update -y
+  sudo $INSTALLER install -y typora
 else
   echo "typora is already installed, skipping."
 fi
