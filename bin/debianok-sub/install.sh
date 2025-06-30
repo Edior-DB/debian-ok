@@ -1,4 +1,3 @@
-// ...existing code from omakub-sub/install.sh...
 CHOICES=(
   "Dev Editor        Install alternative programming editors"
   "Docker            Install Docker and Docker Compose tools"
