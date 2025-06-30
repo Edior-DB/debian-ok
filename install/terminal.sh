@@ -1,5 +1,5 @@
 # Needed for all installers
-sudo $INSTALLER update -y
+sudo $INSTALLER update 
 sudo $INSTALLER upgrade -y
 
 # Install curl, git, unzip (core tools)
