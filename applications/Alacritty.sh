@@ -16,7 +16,7 @@ Comment=Alacritty Terminal Emulator
 Exec=alacritty
 Terminal=false
 Type=Application
-Icon=~/.local/share/omakub/applications/icons/alacritty.svg
+Icon=~/.local/share/debian-ok/applications/icons/alacritty.svg
 Categories=GTK;System;TerminalEmulator;
 StartupNotify=false
 EOF

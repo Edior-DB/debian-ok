@@ -16,7 +16,7 @@ Comment=Basecamp Project Management
 Exec=brave-browser --app="https://launchpad.37signals.com" --name=Basecamp --class=Basecamp
 Terminal=false
 Type=Application
-Icon=/home/$USER/.local/share/omakub/applications/icons/Basecamp.png
+Icon=/home/$USER/.local/share/debian-ok/applications/icons/Basecamp.png
 Categories=GTK;
 MimeType=text/html;text/xml;application/xhtml_xml;
 StartupNotify=true

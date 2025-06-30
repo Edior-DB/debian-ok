@@ -16,7 +16,7 @@ Comment=HEY Email + Calendar
 Exec=brave-browser --app="https://app.hey.com/" --name=HEY --class=HEY
 Terminal=false
 Type=Application
-Icon=/home/$USER/.local/share/omakub/applications/icons/HEY.png
+Icon=/home/$USER/.local/share/debian-ok/applications/icons/HEY.png
 Categories=GTK;
 MimeType=text/html;text/xml;application/xhtml_xml;
 StartupNotify=true

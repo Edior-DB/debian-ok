@@ -16,7 +16,7 @@ Comment=Brave Web Browser
 Exec=brave-browser --new-window
 Terminal=false
 Type=Application
-Icon=/home/$USER/.local/share/omakub/applications/icons/Brave.png
+Icon=/home/$USER/.local/share/debian-ok/applications/icons/Brave.png
 Categories=GTK;Network;WebBrowser;
 StartupNotify=true
 EOF
