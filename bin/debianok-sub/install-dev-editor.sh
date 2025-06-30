@@ -16,11 +16,11 @@ if [[ "$CHOICE" == "<< Back"* ]] || [[ -z "$CHOICE" ]]; then
   # Don't install anything
   echo ""
 else
-  INSTALLER_NAME=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-  case "$INSTALLER_NAME" in
+  INSTALLER_1=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+  case "$INSTALLER_1" in
     "neovim") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-neovim.sh" ;;
     "vscode") INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-vscode.sh" ;;
-    *) INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER.sh" ;;
+    *) INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER_1.sh" ;;
   esac
 
   source $INSTALLER_FILE && gum spin --spinner globe --title "Install completed!" -- sleep 3

@@ -67,14 +67,14 @@ else
     "ollama") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-ollama.sh" ;;
     "tailscale") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-tailscale.sh" ;;
     "geekbench") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-geekbench.sh" ;;
-    *) INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER.sh" ;;
+    *) INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER_1.sh" ;;
   esac
 
   # Try both locations for the installer script
-  if [ -f "$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER.sh" ]; then
-    INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER.sh"
-  elif [ -f "$OMAKUB_PATH/install/terminal/optional/app-$INSTALLER.sh" ]; then
-    INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-$INSTALLER.sh"
+  if [ -f "$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER_1.sh" ]; then
+    INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER_1.sh"
+  elif [ -f "$OMAKUB_PATH/install/terminal/optional/app-$INSTALLER_1.sh" ]; then
+    INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-$INSTALLER_1.sh"
   fi
 
   if [ -f "$INSTALLER_FILE" ]; then
