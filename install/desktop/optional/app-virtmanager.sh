@@ -1,7 +1,8 @@
 # Install virt-manager (Virtual Machine Manager) for Debian 12+
 
 if [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo $INSTALLER update && sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+  sudo $INSTALLER update
+  sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
   echo "virt-manager and KVM packages installed successfully."
 
   # Add user to libvirt and libvirt-qemu groups

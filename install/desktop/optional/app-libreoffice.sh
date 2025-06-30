@@ -7,8 +7,7 @@ if command -v libreoffice >/dev/null 2>&1; then
 fi
 
 if [ "$OMAKUB_OS_ID" = "debian" ]; then
-  if ! sudo $INSTALLER update -y; then
-    echo "Error: Failed to update apt sources."; exit 1; fi
+  sudo $INSTALLER update
   if ! sudo $INSTALLER install -y libreoffice; then
     echo "Error: Failed to install LibreOffice."; exit 1; fi
 else
