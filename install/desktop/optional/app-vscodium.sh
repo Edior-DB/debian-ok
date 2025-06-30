@@ -9,7 +9,7 @@ echo "deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 rm -f vscodium-archive-keyring.gpg
 cd -
 
-sudo $INSTALLER update -y
+sudo $INSTALLER update 
 sudo $INSTALLER install -y codium
 
 mkdir -p ~/.config/VSCodium/User

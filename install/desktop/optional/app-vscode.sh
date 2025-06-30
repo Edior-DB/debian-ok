@@ -5,7 +5,7 @@ echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft
 rm -f packages.microsoft.gpg
 cd -
 
-sudo $INSTALLER update -y
+sudo $INSTALLER update 
 sudo $INSTALLER install -y code
 
 mkdir -p ~/.config/Code/User
