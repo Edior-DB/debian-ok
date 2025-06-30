@@ -1,4 +1,14 @@
-set -e
+set -euo pipefail
+
+# Set and export DEBIANOK_PATH for consistency
+export DEBIANOK_PATH="$HOME/.local/share/debian-ok"
+
+# Prevent running as root
+if [[ $EUID -eq 0 ]]; then
+    echo "$(tput setaf 1)Error: Do not run this installer as root. Please run as a regular user with sudo privileges."
+    echo "Installation stopped."
+    exit 1
+fi
 
 # Early checks for required commands and OS
 if ! command -v sudo >/dev/null 2>&1; then
@@ -7,7 +17,15 @@ if ! command -v sudo >/dev/null 2>&1; then
     exit 1
 fi
 
-ascii_art='\n ____        _     _             ____        _    \n|  _ \\  ___| |__ (_)_ __   __ _|  _ \\  ___| | __\n| | | |/ _ \\ '_ \\| | '_ \\ / _` | | | |/ _ \\ |/ /\n| |_| |  __/ | | | | | | | (_| | |_| |  __/   < \n|____/ \\___|_| |_|_|_| |_|\\__, |____/ \\___|_|\\_\\\n                              |___/                \n'
+# Use a here-document for ASCII art (bash/pipe-safe)
+ascii_art="""
+ ____        _     _             ____        _    
+|  _ \\  ___| |__ (_)_ __   __ _|  _ \\  ___| | __
+| | | |/ _ \\ '_ \\| | '_ \\ / _` | | | |/ _ \\ |/ /
+| |_| |  __/ | | | | | | | (_| | |_| |  __/   < 
+|____/ \\___|_| |_|_|_| |_|\\__, |____/ \\___|_|\\_\\
+                              |___/                
+"""
 
 echo -e "$ascii_art"
 echo "=> Debian-Ok is for fresh Debian 12+ installations only!"
@@ -28,13 +46,13 @@ fi
 sudo apt-get install -y git >/dev/null
 
 echo "Cloning Debian-Ok..."
-rm -rf ~/.local/share/debian-ok
-git clone https://github.com/Edior-DB/debian-ok.git ~/.local/share/debian-ok >/dev/null
-if [[ $DEBIANOK_REF != "master" ]]; then
-	cd ~/.local/share/debian-ok
-	git fetch origin "${DEBIANOK_REF:-stable}" && git checkout "${DEBIANOK_REF:-stable}"
-	cd -
+rm -rf "$DEBIANOK_PATH"
+git clone https://github.com/Edior-DB/debian-ok.git "$DEBIANOK_PATH" >/dev/null
+if [[ ${DEBIANOK_REF:-master} != "master" ]]; then
+    cd "$DEBIANOK_PATH"
+    git fetch origin "${DEBIANOK_REF:-stable}" && git checkout "${DEBIANOK_REF:-stable}"
+    cd -
 fi
 
 echo "Installation starting..."
-source ~/.local/share/debian-ok/install.sh
+source "$DEBIANOK_PATH/install.sh"
