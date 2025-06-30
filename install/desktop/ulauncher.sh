@@ -5,10 +5,10 @@ if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
     echo "Error: Failed to export Ulauncher GPG key."; exit 1; fi
   if ! echo "deb [signed-by=/usr/share/keyrings/ulauncher-archive-keyring.gpg] http://ppa.launchpad.net/agornostal/ulauncher/ubuntu noble main" | sudo tee /etc/apt/sources.list.d/ulauncher-noble.list; then
     echo "Error: Failed to add Ulauncher PPA."; exit 1; fi
-  if ! sudo apt update -y; then
+  if ! sudo $INSTALLER update -y; then
     echo "Error: Failed to update apt sources."; exit 1; fi
-  if ! sudo apt install -y ulauncher; then
-    echo "Error: Failed to install ulauncher on Ubuntu."; exit 1; fi
+  if ! sudo $INSTALLER install -y ulauncher; then
+    echo "Error: Failed to install ulauncher."; exit 1; fi
 elif [ "$OMAKUB_OS_ID" = "debian" ]; then
   cd /tmp
   ULVER=$(curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest | grep 'tag_name' | cut -d"\"" -f4)

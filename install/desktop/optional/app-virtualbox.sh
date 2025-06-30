@@ -4,7 +4,7 @@
 
 # Install VirtualBox and extension pack
 if [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo apt install -y virtualbox virtualbox-ext-pack
+  sudo $INSTALLER install -y virtualbox virtualbox-ext-pack
   sudo usermod -aG vboxusers ${USER}
 else
   echo "Unsupported OS for VirtualBox installation."

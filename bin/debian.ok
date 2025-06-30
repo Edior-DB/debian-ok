@@ -11,6 +11,17 @@ fi
 export DEBIANOK_OS_ID="$ID"
 export DEBIANOK_OS_VERSION_ID="$VERSION_ID"
 
+# Setup and export INSTALLER (apt or nala)
+if command -v nala >/dev/null 2>&1; then
+  if ~/.local/share/debian-ok/bin/gum confirm "Do you want to use nala as your package installer? (Recommended for speedier installs)"; then
+    export INSTALLER="nala"
+  else
+    export INSTALLER="apt"
+  fi
+else
+  export INSTALLER="apt"
+fi
+
 # Check if running on Debian 12+
 if [ "$ID" = "debian" ] && [ $(echo "$VERSION_ID >= 12" | bc) -eq 1 ]; then
   : # Supported

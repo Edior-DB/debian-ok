@@ -7,8 +7,8 @@ fi
 
 if [ "$OMAKUB_OS_ID" = "debian" ]; then
   # Ensure flatpak is installed
-  sudo apt update -y
-  sudo apt install -y flatpak
+  sudo $INSTALLER update -y
+  sudo $INSTALLER install -y flatpak
   # Add flathub remote if not present
   if ! flatpak remote-list | grep -q flathub; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

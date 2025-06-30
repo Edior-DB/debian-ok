@@ -1,2 +1,2 @@
 # Gives you previews in the file manager when pressing space
-sudo apt install -y gnome-sushi
+sudo $INSTALLER install -y gnome-sushi

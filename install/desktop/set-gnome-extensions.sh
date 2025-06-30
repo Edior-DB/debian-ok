@@ -1,6 +1,6 @@
 # Install gnome-shell-extension-manager and pipx
 if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo apt install -y gnome-shell-extension-manager pipx
+  sudo $INSTALLER install -y gnome-shell-extension-manager pipx
 else
   echo "Unsupported OS for Gnome extension manager installation."
   exit 1
