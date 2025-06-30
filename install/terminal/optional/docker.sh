@@ -11,10 +11,10 @@ if [ -f /etc/os-release ]; then
   fi
 fi
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-sudo apt update
+sudo $INSTALLER update
 
 # Install Docker engine and standard plugins
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+sudo $INSTALLER install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
 
 # Give this user privileged Docker access
 sudo usermod -aG docker ${USER}

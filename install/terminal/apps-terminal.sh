@@ -1,6 +1,6 @@
 # Install fzf, ripgrep, bat, zoxide, plocate, apache2-utils, fd-find, tldr (all available in both Ubuntu and Debian)
 if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  if ! sudo apt install -y fzf ripgrep bat zoxide plocate apache2-utils fd-find tldr; then
+  if ! sudo $INSTALLER install -y fzf ripgrep bat zoxide plocate apache2-utils fd-find tldr; then
     echo "Error: Failed to install one or more core terminal utilities. Check your apt sources and package names."
     exit 1
   fi
@@ -11,7 +11,7 @@ fi
 
 # Install eza (modern exa replacement)
 if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-  if ! sudo apt install -y eza; then
+  if ! sudo $INSTALLER install -y eza; then
     echo "Error: Failed to install eza on Ubuntu."
     exit 1
   fi
@@ -79,7 +79,7 @@ fi
 
 # Install btop (resource monitor)
 if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  if ! sudo apt install -y btop; then
+  if ! sudo $INSTALLER install -y btop; then
     echo "Error: Failed to install btop."
     exit 1
   fi
@@ -94,8 +94,8 @@ if ! command -v gh >/dev/null 2>&1; then
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
     sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
-    sudo apt update
-    if ! sudo apt install -y gh; then
+    sudo $INSTALLER update
+    if ! sudo $INSTALLER install -y gh; then
       echo "Error: Failed to install GitHub CLI (gh)."
       exit 1
     fi
@@ -106,7 +106,7 @@ fi
 
 # Install xournalpp (note-taking app)
 if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  if ! sudo apt install -y xournalpp; then
+  if ! sudo $INSTALLER install -y xournalpp; then
     echo "Error: Failed to install xournalpp."
     exit 1
   fi
@@ -117,12 +117,12 @@ fi
 
 # Install MySQL/MariaDB development libraries
 if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-  if ! sudo apt install -y libmysqlclient-dev; then
+  if ! sudo $INSTALLER install -y libmysqlclient-dev; then
     echo "Error: Failed to install libmysqlclient-dev."
     exit 1
   fi
 elif [ "$OMAKUB_OS_ID" = "debian" ]; then
-  if ! sudo apt install -y libmariadb-dev libmariadb-dev-compat; then
+  if ! sudo $INSTALLER install -y libmariadb-dev libmariadb-dev-compat; then
     echo "Error: Failed to install MariaDB dev libraries."
     exit 1
   fi

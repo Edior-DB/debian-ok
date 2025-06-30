@@ -7,10 +7,10 @@ if command -v fastfetch >/dev/null 2>&1; then
 else
   if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
     sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
-    sudo apt update -y
-    sudo apt install -y fastfetch
+    sudo $INSTALLER update -y
+    sudo $INSTALLER install -y fastfetch
   elif [ "$OMAKUB_OS_ID" = "debian" ]; then
-    sudo apt update -y
+    sudo $INSTALLER update -y
     # Download and install latest fastfetch .deb for amd64
     cd /tmp
     FASTFETCH_DEB_URL=$(curl -s https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest | grep browser_download_url | grep 'amd64.deb' | cut -d '"' -f 4 | head -n 1)

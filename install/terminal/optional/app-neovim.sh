@@ -26,13 +26,13 @@ if command -v luarocks >/dev/null 2>&1; then
   echo "luarocks is already installed, skipping."
 else
   echo "Installing luarocks..."
-  if ! sudo apt install -y luarocks; then
+  if ! sudo $INSTALLER install -y luarocks; then
     echo "Error: Failed to install luarocks. Please check your apt sources and try again."
     return 1
   fi
 fi
 if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-  sudo apt install -y tree-sitter-cli
+  sudo $INSTALLER install -y tree-sitter-cli
 elif [ "$OMAKUB_OS_ID" = "debian" ]; then
   # Check if tree-sitter is installed and at latest version
   if command -v tree-sitter >/dev/null 2>&1; then
