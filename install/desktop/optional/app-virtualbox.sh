@@ -3,7 +3,7 @@
 # for a guide on how to run Ubuntu inside it.
 
 # Install VirtualBox and extension pack
-if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
+if [ "$OMAKUB_OS_ID" = "debian" ]; then
   sudo apt install -y virtualbox virtualbox-ext-pack
   sudo usermod -aG vboxusers ${USER}
 else

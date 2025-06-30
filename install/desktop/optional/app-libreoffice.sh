@@ -6,7 +6,7 @@ if command -v libreoffice >/dev/null 2>&1; then
   exit 0
 fi
 
-if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
+if [ "$OMAKUB_OS_ID" = "debian" ]; then
   if ! sudo apt update -y; then
     echo "Error: Failed to update apt sources."; exit 1; fi
   if ! sudo apt install -y libreoffice; then

@@ -37,10 +37,8 @@ fi
 
 sudo apt-get install -y git >/dev/null
 
-echo "Cloning Omakub (Debian-Ok fork)..."
-rm -rf ~/.local/share/omakub
+echo "Cloning Debian-Ok..."
 rm -rf ~/.local/share/debian-ok
-git clone https://github.com/Edior-DB/debian-ok.git ~/.local/share/omakub >/dev/null
 git clone https://github.com/Edior-DB/debian-ok.git ~/.local/share/debian-ok >/dev/null
 if [[ $DEBIANOK_REF != "master" ]]; then
 	cd ~/.local/share/debian-ok
@@ -49,4 +47,4 @@ if [[ $DEBIANOK_REF != "master" ]]; then
 fi
 
 echo "Installation starting..."
-source ~/.local/share/omakub/install.sh
+source ~/.local/share/debian-ok/install.sh
