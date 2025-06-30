@@ -57,8 +57,8 @@ elif [[ "$CHOICE" == "> All"* ]]; then
     gum spin --spinner globe --title "Install completed!" -- sleep 3
   fi
 else
-  INSTALLER=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-  case "$INSTALLER" in
+  INSTALLER_1=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+  case "$INSTALLER_1" in
     "dev-editor") INSTALLER_FILE="$OMAKUB_PATH/bin/debianok-sub/install-dev-editor.sh" ;;
     "web-apps") INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/select-web-apps.sh" ;;
     "dev-language") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/select-dev-language.sh" ;;
