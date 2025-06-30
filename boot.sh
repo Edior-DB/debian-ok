@@ -2,6 +2,8 @@ set -euo pipefail
 
 # Set and export DEBIANOK_PATH for consistency
 export DEBIANOK_PATH="$HOME/.local/share/debian-ok"
+# Mirror for legacy compatibility
+export OMAKUB_PATH="$DEBIANOK_PATH"
 
 # Prevent running as root
 if [[ $EUID -eq 0 ]]; then
@@ -28,8 +30,9 @@ ascii_art="""
 """
 
 echo -e "$ascii_art"
-echo "=> Debian-Ok is for fresh Debian 12+ installations only!"
-echo -e "\nBegin installation (or abort with ctrl+c)..."
+echo "=> Debian-Ok is for fresh Debian 12+ (Bookworm or newer) installations only!"
+echo -e "\nPress Enter to begin installation, or abort with Ctrl+C."
+read -r
 
 if ! groups "$USER" | grep -qw sudo; then
     echo "$(tput setaf 1)Error: Your user ($USER) is not in the 'sudo' group."
