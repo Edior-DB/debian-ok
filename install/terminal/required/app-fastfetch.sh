@@ -5,12 +5,8 @@ if command -v fastfetch >/dev/null 2>&1; then
   FASTFETCH_VERSION=$(fastfetch --version 2>/dev/null | head -n 1)
   echo "Fastfetch is already installed: $FASTFETCH_VERSION. Skipping install."
 else
-  if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-    sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
-    sudo $INSTALLER update -y
-    sudo $INSTALLER install -y fastfetch
-  elif [ "$OMAKUB_OS_ID" = "debian" ]; then
-    sudo $INSTALLER update -y
+  if [ "$OMAKUB_OS_ID" = "debian" ]; then
+    sudo $INSTALLER update 
     # Download and install latest fastfetch .deb for amd64
     cd /tmp
     FASTFETCH_DEB_URL=$(curl -s https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest | grep browser_download_url | grep 'amd64.deb' | cut -d '"' -f 4 | head -n 1)
