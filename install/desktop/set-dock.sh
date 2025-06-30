@@ -1,6 +1,8 @@
 # Favorite apps for dock
 apps=(
 	"google-chrome.desktop"
+	"Firefox.desktop"
+	"Brave.desktop"
 	"Alacritty.desktop"
 	"Neovim.desktop"
 	"code.desktop"
