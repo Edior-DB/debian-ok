@@ -15,7 +15,7 @@ Comment=Browse the Web
 Exec=firefox --new-window
 Terminal=false
 Type=Application
-Icon=firefox
+Icon=/usr/share/icons/hicolor/128x128/apps/firefox.png
 Categories=GTK;Network;WebBrowser;
 StartupNotify=true
 EOF
