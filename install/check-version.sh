@@ -7,7 +7,10 @@ if [ ! -f /etc/os-release ]; then
 fi
 
 . /etc/os-release
+# Set both DEBIANOK_OS_ID and OMAKUB_OS_ID for compatibility
+export DEBIANOK_OS_ID="$ID"
 export OMAKUB_OS_ID="$ID"
+export DEBIANOK_OS_VERSION_ID="$VERSION_ID"
 export OMAKUB_OS_VERSION_ID="$VERSION_ID"
 
 # Check if running on Debian 12+
@@ -47,6 +50,8 @@ source ~/.local/share/debian-ok/install/check-gnome.sh
 sudo apt-get update >/dev/null
 
 # Export Debian version for use in other scripts
+export DEBIANOK_DEBIAN_MAJOR=$(echo $DEBIANOK_OS_VERSION_ID | cut -d. -f1)
 export OMAKUB_DEBIAN_MAJOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f1)
+export DEBIANOK_DEBIAN_MINOR=$(echo $DEBIANOK_OS_VERSION_ID | cut -d. -f2)
 export OMAKUB_DEBIAN_MINOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f2)
 
