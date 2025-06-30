@@ -6,9 +6,7 @@ if command -v rubymine >/dev/null 2>&1; then
   exit 0
 fi
 
-if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-  sudo snap install rubymine --classic
-elif [ "$OMAKUB_OS_ID" = "debian" ]; then
+if [ "$OMAKUB_OS_ID" = "debian" ]; then
   # Download and extract latest RubyMine tarball from JetBrains
   cd /tmp
   LATEST_RM_URL=$(curl -s https://data.services.jetbrains.com/products/releases?code=RM\&latest=true\&type=release | grep -o 'https://download.jetbrains.com/.*linux.*.tar.gz' | head -n 1)

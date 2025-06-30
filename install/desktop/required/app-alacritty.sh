@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Alacritty is a GPU-powered and highly extensible terminal. See https://alacritty.org/
 # Install Alacritty
-if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
+if [ "$OMAKUB_OS_ID" = "debian" ]; then
   sudo apt install -y alacritty
 else
   echo "Unsupported OS for Alacritty installation."

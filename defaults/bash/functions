@@ -13,7 +13,7 @@ webm2mp4() {
 iso2sd() {
   if [ $# -ne 2 ]; then
     echo "Usage: iso2sd <input_file> <output_device>"
-    echo "Example: iso2sd ~/Downloads/ubuntu-25.04-desktop-amd64.iso /dev/sda"
+    echo "Example: iso2sd ~/Downloads/debian-12.5.0-amd64.iso /dev/sda"
     echo -e "\nAvailable SD cards:"
     lsblk -d -o NAME | grep -E '^sd[a-z]' | awk '{print "/dev/"$1}'
   else
