@@ -6,6 +6,7 @@ CHOICES=(
   "VSCode            Popular open-source code editor"
   "Windsurf          Another AI Code Editor"
   "Zed               Fast all-purpose editor"
+  "VsCodium         Telemetry-free and Lightweight VSCode alternative "
   "<< Back           "
 )
 
