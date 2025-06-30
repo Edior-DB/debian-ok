@@ -1,10 +1,10 @@
-cp ~/.local/share/omakub/configs/alacritty/btop.toml ~/.config/alacritty/btop.toml
+cp ~/.local/share/debian-ok/configs/alacritty/btop.toml ~/.config/alacritty/btop.toml
 
 # Only attempt to set configuration if btop is not already set
 if [ ! -f "$HOME/.config/btop/btop.conf" ]; then
   # Use Omakub btop config
   mkdir -p ~/.config/btop/themes
-  cp ~/.local/share/omakub/configs/btop.conf ~/.config/btop/btop.conf
+  cp ~/.local/share/debian-ok/configs/btop.conf ~/.config/btop/btop.conf
 fi
 
 # Set the theme for btop

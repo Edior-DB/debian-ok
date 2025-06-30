@@ -13,7 +13,7 @@ sudo apt update -y
 sudo apt install -y codium
 
 mkdir -p ~/.config/VSCodium/User
-cp ~/.local/share/omakub/configs/vscode.json ~/.config/VSCodium/User/settings.json
+cp ~/.local/share/debian-ok/configs/vscode.json ~/.config/VSCodium/User/settings.json
 
 # Install default supported themes
 codium --install-extension enkia.tokyo-night
