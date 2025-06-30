@@ -1,2 +1,2 @@
-source ~/.local/share/debian-ok/themes/tokyo-night/gnome.sh
-source ~/.local/share/debian-ok/themes/tokyo-night/tophat.sh
+source ~/.local/share/debian-ok/themes/nord/gnome.sh
+source ~/.local/share/debian-ok/themes/nord/tophat.sh
