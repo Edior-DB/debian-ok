@@ -27,4 +27,4 @@ if [ -n "$THEME" ] && [ "$THEME" != "<<-back" ]; then
   # source $OMAKUB_PATH/themes/$THEME/chrome.sh
 fi
 
-source $OMAKUB_PATH/bin/omakub-sub/menu.sh
+source $OMAKUB_PATH/bin/debianok-sub/menu.sh

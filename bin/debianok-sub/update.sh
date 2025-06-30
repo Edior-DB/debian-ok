@@ -17,7 +17,7 @@ else
 	INSTALLER=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
 
 	case "$INSTALLER" in
-	"omakub") INSTALLER_FILE="$OMAKUB_PATH/bin/omakub-sub/migrate.sh" ;;
+	"omakub") INSTALLER_FILE="$OMAKUB_PATH/bin/debianok-sub/migrate.sh" ;;
 	"ollama") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-ollama.sh" ;;
 	"lazygit"|"lazydocker"|"neovim"|"zellij") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-$INSTALLER.sh" ;;
 	*) INSTALLER_FILE="$OMAKUB_PATH/install/terminal/app-$INSTALLER.sh" ;;
@@ -27,4 +27,4 @@ else
 fi
 
 clear
-source $OMAKUB_PATH/bin/omakub
+source $OMAKUB_PATH/bin/debianok-sub/menu.sh

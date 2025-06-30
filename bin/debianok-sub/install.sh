@@ -1,3 +1,4 @@
+// ...existing code from omakub-sub/install.sh...
 CHOICES=(
   "Dev Editor        Install alternative programming editors"
   "Dev Language      Install programming language environment"
@@ -58,7 +59,7 @@ elif [[ "$CHOICE" == "> All"* ]]; then
 else
   INSTALLER=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
   case "$INSTALLER" in
-    "dev-editor") INSTALLER_FILE="$OMAKUB_PATH/bin/omakub-sub/install-dev-editor.sh" ;;
+    "dev-editor") INSTALLER_FILE="$OMAKUB_PATH/bin/debianok-sub/install-dev-editor.sh" ;;
     "web-apps") INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/select-web-apps.sh" ;;
     "dev-language") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/select-dev-language.sh" ;;
     "dev-database") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/select-dev-storage.sh" ;;
@@ -84,4 +85,4 @@ else
 fi
 
 clear
-source $OMAKUB_PATH/bin/omakub
+source $OMAKUB_PATH/bin/debianok-sub/menu.sh

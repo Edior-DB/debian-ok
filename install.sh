@@ -8,7 +8,7 @@ last_command=""
 # Improved error reporting: show the failed command and its exit code for easier troubleshooting
 function omakub_error_trap {
   local exit_code=$?
-  echo -e "\nOmakub installation failed!\n  Command: $last_command\n  Exit code: $exit_code\n  You can retry by running: source ~/.local/share/omakub/install.sh"
+  echo -e "\nDebian-Ok installation failed!\n  Command: $last_command\n  Exit code: $exit_code\n  You can retry by running: source ~/.local/share/omakub/install.sh"
   while true; do sleep 1; done
 }
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
@@ -41,7 +41,7 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.screensaver lock-enabled true
   gsettings set org.gnome.desktop.session idle-delay 300
 else
-  echo "Error: Omakub must be installed from within a GNOME session."
+  echo "Error: Debian-Ok must be installed from within a GNOME session."
   echo "Please log into GNOME and re-run this installer."
   exit 1
 fi

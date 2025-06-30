@@ -10,14 +10,13 @@ fi
 export OMAKUB_OS_ID="$ID"
 export OMAKUB_OS_VERSION_ID="$VERSION_ID"
 
-# Check if running on Ubuntu 24.04+ or Debian 12+
-if { [ "$ID" = "ubuntu" ] && [ $(echo "$VERSION_ID >= 24.04" | bc) -eq 1 ]; } || \
-   { [ "$ID" = "debian" ] && [ $(echo "$VERSION_ID >= 12" | bc) -eq 1 ]; }; then
+# Check if running on Debian 12+
+if [ "$ID" = "debian" ] && [ $(echo "$VERSION_ID >= 12" | bc) -eq 1 ]; then
   : # Supported
 else
   echo "$(tput setaf 1)Error: OS requirement not met"
   echo "You are currently running: $ID $VERSION_ID"
-  echo "OS required: Ubuntu 24.04+ or Debian 12+ (bookworm)"
+  echo "OS required: Debian 12+ (bookworm)"
   echo "Installation stopped."
   exit 1
 fi
@@ -47,8 +46,7 @@ source ~/.local/share/omakub/install/check-gnome.sh
 
 sudo apt-get update >/dev/null
 
-# Export Ubuntu version for use in other scripts
-export OMAKUB_UBUNTU_MAJOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f1)
-export OMAKUB_UBUNTU_MINOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f2)
+# Export Debian version for use in other scripts
 export OMAKUB_DEBIAN_MAJOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f1)
+export OMAKUB_DEBIAN_MINOR=$(echo $OMAKUB_OS_VERSION_ID | cut -d. -f2)
 

@@ -9,16 +9,18 @@ fi
 
 
 
-ascii_art='________                  __        ___.
-\_____  \   _____ _____  |  | ____ _\_ |__
- /   |   \ /     \\__   \ |  |/ /  |  \ __ \
-/    |    \  Y Y  \/ __ \|    <|  |  / \_\ \
-\_______  /__|_|  (____  /__|_ \____/|___  /
-        \/      \/     \/     \/         \/
+ascii_art='
+ ____        _     _             ____        _    
+|  _ \  ___| |__ (_)_ __   __ _|  _ \  ___| | __
+| | | |/ _ \ '_ \| | '_ \ / _` | | | |/ _ \ |/ /
+| |_| |  __/ | | | | | | | (_| | |_| |  __/   < 
+|____/ \___|_| |_|_|_| |_|\__, |____/ \___|_|\_\
+                              |___/                
+
 '
 
 echo -e "$ascii_art"
-echo "=> Omakub is for fresh Debian 12+ installations only!"
+echo "=> Debian-Ok is for fresh Debian 12+ installations only!"
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 if ! groups "$USER" | grep -qw sudo; then
@@ -35,12 +37,14 @@ fi
 
 sudo apt-get install -y git >/dev/null
 
-echo "Cloning Omakub..."
+echo "Cloning Omakub (Debian-Ok fork)..."
 rm -rf ~/.local/share/omakub
-git clone https://github.com/Edior-DB/omakub.git ~/.local/share/omakub >/dev/null
-if [[ $OMAKUB_REF != "master" ]]; then
-	cd ~/.local/share/omakub
-	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
+rm -rf ~/.local/share/debian-ok
+git clone https://github.com/Edior-DB/debian-ok.git ~/.local/share/omakub >/dev/null
+git clone https://github.com/Edior-DB/debian-ok.git ~/.local/share/debian-ok >/dev/null
+if [[ $DEBIANOK_REF != "master" ]]; then
+	cd ~/.local/share/debian-ok
+	git fetch origin "${DEBIANOK_REF:-stable}" && git checkout "${DEBIANOK_REF:-stable}"
 	cd -
 fi
 

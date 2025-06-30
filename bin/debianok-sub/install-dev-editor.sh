@@ -26,5 +26,5 @@ else
 fi
 
 clear
-source $OMAKUB_PATH/bin/omakub-sub/header.sh
-source $OMAKUB_PATH/bin/omakub-sub/install.sh
+source $OMAKUB_PATH/bin/debianok-sub/header.sh
+source $OMAKUB_PATH/bin/debianok-sub/install.sh
