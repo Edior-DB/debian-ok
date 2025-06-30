@@ -9,7 +9,9 @@ fi
 
 . /etc/os-release
 export DEBIANOK_OS_ID="$ID"
+export OMAKUB_OS_ID="$ID"
 export DEBIANOK_OS_VERSION_ID="$VERSION_ID"
+export OMAKUB_OS_VERSION_ID="$VERSION_ID"
 
 # Setup and export INSTALLER (apt or nala)
 if command -v nala >/dev/null 2>&1; then
