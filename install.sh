@@ -25,13 +25,14 @@ source ~/.local/share/debian-ok/install/identification.sh
 
 # Choose package installer (apt or nala)
 if command -v nala >/dev/null 2>&1; then
-  if ~/.local/share/debian-ok/bin/gum confirm "Do you want to use nala as your package installer? (Recommended for speedier installs)"; then
+  export INSTALLER="nala"
+else
+  if ~/.local/share/debian-ok/bin/gum confirm "Nala is not installed. Would you like to install and use nala as your package installer? (Recommended for speedier installs)"; then
+    sudo apt update && sudo apt install -y nala
     export INSTALLER="nala"
   else
     export INSTALLER="apt"
   fi
-else
-  export INSTALLER="apt"
 fi
 
 # Only install if running GNOME session
