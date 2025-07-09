@@ -13,13 +13,27 @@ export OMAKUB_OS_ID="$ID"
 export DEBIANOK_OS_VERSION_ID="$VERSION_ID"
 export OMAKUB_OS_VERSION_ID="$VERSION_ID"
 
-# Check if running on Debian 12+
-if [ "$ID" = "debian" ] && [ $(echo "$VERSION_ID >= 12" | bc) -eq 1 ]; then
-  : # Supported
+# Check if running on Debian 12 only (not 13 or higher)
+if [ "$ID" = "debian" ]; then
+  if [ "$VERSION_ID" = "12" ]; then
+    : # Supported
+  elif [ "$VERSION_ID" = "13" ]; then
+    echo "$(tput setaf 1)Error: Debian 13 is not yet supported."
+    echo "You are currently running: $ID $VERSION_ID"
+    echo "Please use Debian 12 (bookworm)."
+    echo "Installation stopped."
+    exit 1
+  else
+    echo "$(tput setaf 1)Error: OS requirement not met"
+    echo "You are currently running: $ID $VERSION_ID"
+    echo "OS required: Debian 12 (bookworm)"
+    echo "Installation stopped."
+    exit 1
+  fi
 else
   echo "$(tput setaf 1)Error: OS requirement not met"
   echo "You are currently running: $ID $VERSION_ID"
-  echo "OS required: Debian 12+ (bookworm)"
+  echo "OS required: Debian 12 (bookworm)"
   echo "Installation stopped."
   exit 1
 fi

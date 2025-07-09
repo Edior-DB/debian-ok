@@ -1,3 +1,12 @@
+#!/bin/bash
+# Debian version check (only 12 supported, 13 not yet supported)
+if [ "$OMAKUB_OS_VERSION_ID" = "13" ]; then
+  echo "Debian 13 is not yet supported."
+  exit 1
+elif [ "$OMAKUB_OS_VERSION_ID" != "12" ]; then
+  echo "Unsupported Debian version for this installer. Only Debian 12 is supported."
+  exit 1
+fi
 # Install 1password and 1password-cli single script
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
 sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
