@@ -1,26 +1,67 @@
 # Favorite apps for dock
-apps=(
-	"google-chrome.desktop"
-	"Firefox.desktop"
-	"Brave.desktop"
-	"Alacritty.desktop"
-	"Neovim.desktop"
-	"code.desktop"
-	"WhatsApp.desktop"
-	"signal-desktop.desktop"
-	"Zoom.desktop"
-	"spotify.desktop"
-	"steam.desktop"
-	"pinta_pinta.desktop"
-	"md.obsidian.Obsidian.desktop"
-	"Activity.desktop"
-	"Docker.desktop"
-	"Omakub.desktop"
-	"1password.desktop"
-	"org.gnome.Settings.desktop"
-	"org.gnome.Nautilus.desktop"
-	"localsend_app.desktop"
-)
+apps=()
+
+# Add desktop entries for installed apps
+if command -v google-chrome >/dev/null 2>&1; then
+	apps+=("google-chrome.desktop")
+fi
+if command -v firefox >/dev/null 2>&1; then
+	apps+=("Firefox.desktop")
+fi
+if command -v brave-browser >/dev/null 2>&1; then
+	apps+=("Brave.desktop")
+fi
+if command -v alacritty >/dev/null 2>&1; then
+	apps+=("Alacritty.desktop")
+fi
+if command -v nvim >/dev/null 2>&1; then
+	apps+=("Neovim.desktop")
+fi
+if command -v code >/dev/null 2>&1; then
+	apps+=("code.desktop")
+fi
+if command -v whatsapp >/dev/null 2>&1; then
+	apps+=("WhatsApp.desktop")
+fi
+if command -v signal-desktop >/dev/null 2>&1; then
+	apps+=("signal-desktop.desktop")
+fi
+if command -v zoom >/dev/null 2>&1; then
+	apps+=("Zoom.desktop")
+fi
+if command -v spotify >/dev/null 2>&1; then
+	apps+=("spotify.desktop")
+fi
+if command -v steam >/dev/null 2>&1; then
+	apps+=("steam.desktop")
+fi
+if command -v pinta >/dev/null 2>&1; then
+	apps+=("pinta_pinta.desktop")
+fi
+if command -v obsidian >/dev/null 2>&1; then
+	apps+=("md.obsidian.Obsidian.desktop")
+fi
+if command -v activity >/dev/null 2>&1; then
+	apps+=("Activity.desktop")
+fi
+if command -v docker >/dev/null 2>&1; then
+	apps+=("Docker.desktop")
+fi
+if command -v omakub >/dev/null 2>&1; then
+	apps+=("Omakub.desktop")
+fi
+if command -v 1password >/dev/null 2>&1; then
+	apps+=("1password.desktop")
+fi
+# GNOME settings and Nautilus are always present on GNOME
+apps+=("org.gnome.Settings.desktop")
+apps+=("org.gnome.Nautilus.desktop")
+if command -v localsend >/dev/null 2>&1; then
+	apps+=("localsend_app.desktop")
+fi
+if command -v kitty >/dev/null 2>&1; then
+	apps+=("kitty.desktop")
+fi
 
 # Array to hold installed favorite apps
 installed_apps=()

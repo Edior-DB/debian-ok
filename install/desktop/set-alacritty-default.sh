@@ -4,12 +4,7 @@
 sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
 
 # Install python3-nautilus (for Alacritty integration)
-if [ "$DEBIANOK_OS_ID" = "debian" ]; then
-  sudo $INSTALLER install -y python3-nautilus
-else
-  echo "Unsupported OS for python3-nautilus installation."
-  exit 1
-fi
+sudo $INSTALLER install -y python3-nautilus
 
 mkdir -p ~/.local/share/nautilus-python/extensions/
 

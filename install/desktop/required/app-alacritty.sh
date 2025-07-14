@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 # Alacritty is a GPU-powered and highly extensible terminal. See https://alacritty.org/
 # Install Alacritty
-if [ "$DEBIANOK_OS_ID" = "debian" ]; then
-  sudo $INSTALLER install -y alacritty
-else
-  echo "Unsupported OS for Alacritty installation."
-  exit 1
-fi
+sudo $INSTALLER install -y alacritty
 mkdir -p ~/.config/alacritty
 cp ~/.local/share/debian-ok/configs/alacritty.toml ~/.config/alacritty/alacritty.toml
 cp ~/.local/share/debian-ok/configs/alacritty/shared.toml ~/.config/alacritty/shared.toml
