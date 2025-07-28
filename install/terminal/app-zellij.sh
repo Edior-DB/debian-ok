@@ -25,7 +25,9 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
       export PATH="$HOME/.local/kitty.app/bin:$PATH"
       # Persist PATH for future sessions
       SHELL_RC="$HOME/.bashrc"
-      [ -n "$ZSH_VERSION" ] && SHELL_RC="$HOME/.zshrc"
+      if [ -n "${ZSH_VERSION-}" ]; then
+        SHELL_RC="$HOME/.zshrc"
+      fi
       if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
         echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >> "$SHELL_RC"
       fi

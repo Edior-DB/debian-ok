@@ -10,21 +10,5 @@
   },
   "appearance": {
     "theme": "dark"
-  },
-  "extensions": {
-    "enabled": [
-      {
-        "name": "uBlock Origin",
-        "id": "cjpalhdlnbpafiamejdnhcphjbkeiagm"
-      },
-      {
-        "name": "Privacy Badger",
-        "id": "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
-      },
-      {
-        "name": "CleanURLs",
-        "id": "dhkplhfnhceodhffomolpfigojocbpcb"
-      }
-    ]
   }
 }

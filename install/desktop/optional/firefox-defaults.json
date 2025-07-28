@@ -10,21 +10,5 @@
   },
   "appearance": {
     "theme": "dark"
-  },
-  "extensions": {
-    "enabled": [
-      {
-        "name": "uBlock Origin",
-        "id": "uBlock0@raymondhill.net"
-      },
-      {
-        "name": "Privacy Badger",
-        "id": "jid1-MnnxcxisBPnSXQ@jetpack"
-      },
-      {
-        "name": "CleanURLs",
-        "id": "clean-urls@protonmail.com"
-      }
-    ]
   }
 }
