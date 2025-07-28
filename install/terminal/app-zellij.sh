@@ -50,14 +50,7 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   echo -e "#!/bin/bash\n$KITTY_CMD zellij \"\$@\"" > ~/.local/bin/zellij-in-kitty
   chmod +x ~/.local/bin/zellij-in-kitty
   echo "You can now run 'zellij-in-kitty' to launch zellij in kitty."
-  # Ensure kitty and zellij-in-kitty are in PATH for future sessions
-  SHELL_RC="$HOME/.bashrc"
-  if [ -n "${ZSH_VERSION-}" ]; then
-    SHELL_RC="$HOME/.zshrc"
-  fi
-  if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
-    echo 'export PATH="$HOME/.local/kitty.app/bin:$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
-  fi
+  # PATH for kitty and zellij-in-kitty is now managed by defaults/bash/kitty-zellij-path, sourced from defaults/bash/rc
 else
   mkdir -p ~/.local/bin
   echo -e '#!/bin/bash\ngnome-terminal -- zellij "$@"' > ~/.local/bin/zellij-in-gnome-terminal
