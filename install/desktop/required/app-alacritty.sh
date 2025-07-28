@@ -3,12 +3,18 @@
 # Install Alacritty
 sudo $INSTALLER install -y alacritty
 mkdir -p ~/.config/alacritty
-cp ~/.local/share/debian-ok/configs/alacritty.toml ~/.config/alacritty/alacritty.toml
+
+
+# Fetch visuals (theme, font) from Chris Titus, but keep your own keybinds
+curl -sSLo ~/.config/alacritty/alacritty.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/alacritty.toml"
+curl -sSLo ~/.config/alacritty/nordic.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/nordic.toml"
+cp ~/.local/share/debian-ok/configs/alacritty/keybinds.toml ~/.config/alacritty/keybinds.toml
+
+# Retain other custom settings
 cp ~/.local/share/debian-ok/configs/alacritty/shared.toml ~/.config/alacritty/shared.toml
 cp ~/.local/share/debian-ok/configs/alacritty/pane.toml ~/.config/alacritty/pane.toml
 cp ~/.local/share/debian-ok/configs/alacritty/btop.toml ~/.config/alacritty/btop.toml
-cp ~/.local/share/debian-ok/themes/tokyo-night/alacritty.toml ~/.config/alacritty/theme.toml
-cp ~/.local/share/debian-ok/configs/alacritty/fonts/CaskaydiaMono.toml ~/.config/alacritty/font.toml
+cp ~/.local/share/debian-ok/configs/alacritty/fonts/MesloLGS.toml ~/.config/alacritty/font.toml
 cp ~/.local/share/debian-ok/configs/alacritty/font-size.toml ~/.config/alacritty/font-size.toml
 
 # Always set shell.program to bash in shared.toml (do not reference zellij)
