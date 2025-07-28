@@ -4,11 +4,7 @@ sudo $INSTALLER upgrade -y
 
 # Install curl, git, unzip (core tools)
 if [ "$DEBIANOK_OS_ID" = "debian" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo $INSTALLER install -y curl git unzip
-else
-  echo "Unsupported OS for core tools installation."
-  exit 1
-fi
+sudo $INSTALLER install -y curl git unzip
 
 # Run required terminal installers
 for installer in ~/.local/share/debian-ok/install/terminal/required/*.sh; do
