@@ -5,3 +5,11 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Aliases: original kitty as plainkitty, zellij-in-kitty as kitty
+if command -v kitty >/dev/null 2>&1; then
+  alias plainkitty="$(command -v kitty)"
+fi
+if [ -x "$HOME/.local/bin/zellij-in-kitty" ]; then
+  alias zkitty="$HOME/.local/bin/zellij-in-kitty"
+fi
