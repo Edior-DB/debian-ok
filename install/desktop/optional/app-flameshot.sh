@@ -6,13 +6,9 @@ if command -v flameshot >/dev/null 2>&1; then
   exit 0
 fi
 
-if [ "$OMAKUB_OS_ID" = "debian" ]; then
-  sudo $INSTALLER update
-  if ! sudo $INSTALLER install -y flameshot; then
-    echo "Error: Failed to install flameshot."; exit 1; fi
-else
-  echo "Unsupported OS for Flameshot installation."; exit 1;
-fi
+sudo $INSTALLER update
+if ! sudo $INSTALLER install -y flameshot; then
+  echo "Error: Failed to install flameshot."; exit 1; fi
 
 if command -v flameshot >/dev/null 2>&1; then
   FLAMESHOT_VERSION=$(flameshot --version 2>/dev/null | head -n 1)

@@ -31,31 +31,27 @@ else
     return 1
   fi
 fi
-if [ "$OMAKUB_OS_ID" = "ubuntu" ]; then
-  sudo $INSTALLER install -y tree-sitter-cli
-elif [ "$OMAKUB_OS_ID" = "debian" ]; then
-  # Check if tree-sitter is installed and at latest version
-  if command -v tree-sitter >/dev/null 2>&1; then
-    INSTALLED_TREE_SITTER_VERSION=$(tree-sitter --version 2>/dev/null | awk '{print $3}')
-  else
-    INSTALLED_TREE_SITTER_VERSION=""
+# Always use the GitHub release for tree-sitter
+if command -v tree-sitter >/dev/null 2>&1; then
+  INSTALLED_TREE_SITTER_VERSION=$(tree-sitter --version 2>/dev/null | awk '{print $3}')
+else
+  INSTALLED_TREE_SITTER_VERSION=""
+fi
+LATEST_TREE_SITTER_VERSION=$(curl -s https://api.github.com/repos/tree-sitter/tree-sitter/releases/latest | grep 'tag_name' | cut -d '"' -f4 | sed 's/^v//')
+if [ "$INSTALLED_TREE_SITTER_VERSION" = "$LATEST_TREE_SITTER_VERSION" ]; then
+  echo "tree-sitter $LATEST_TREE_SITTER_VERSION is already installed, skipping."
+else
+  cd /tmp
+  TREE_SITTER_URL=$(curl -s https://api.github.com/repos/tree-sitter/tree-sitter/releases/latest | grep browser_download_url | grep 'tree-sitter-linux-x64.gz' | cut -d '"' -f 4 | head -n 1)
+  if [ -z "$TREE_SITTER_URL" ]; then
+    echo "Could not find tree-sitter CLI binary. Aborting."
+    exit 1
   fi
-  LATEST_TREE_SITTER_VERSION=$(curl -s https://api.github.com/repos/tree-sitter/tree-sitter/releases/latest | grep 'tag_name' | cut -d '"' -f4 | sed 's/^v//')
-  if [ "$INSTALLED_TREE_SITTER_VERSION" = "$LATEST_TREE_SITTER_VERSION" ]; then
-    echo "tree-sitter $LATEST_TREE_SITTER_VERSION is already installed, skipping."
-  else
-    cd /tmp
-    TREE_SITTER_URL=$(curl -s https://api.github.com/repos/tree-sitter/tree-sitter/releases/latest | grep browser_download_url | grep 'tree-sitter-linux-x64.gz' | cut -d '"' -f 4 | head -n 1)
-    if [ -z "$TREE_SITTER_URL" ]; then
-      echo "Could not find tree-sitter CLI binary for Debian. Aborting."
-      exit 1
-    fi
-    wget -O tree-sitter.gz "$TREE_SITTER_URL"
-    gunzip tree-sitter.gz
-    chmod +x tree-sitter
-    sudo mv tree-sitter /usr/local/bin/tree-sitter
-    cd -
-  fi
+  wget -O tree-sitter.gz "$TREE_SITTER_URL"
+  gunzip tree-sitter.gz
+  chmod +x tree-sitter
+  sudo mv tree-sitter /usr/local/bin/tree-sitter
+  cd -
 fi
 
 # Only attempt to set configuration if Neovim has never been run

@@ -21,8 +21,12 @@ if [[ -n "$languages" ]]; then
       mise use --global go@latest
       ;;
     PHP)
-      if [ "$OMAKUB_OS_ID" = "debian" ]; then
+      if [ "$OMAKUB_OS_VERSION_ID" = "12" ]; then
         sudo $INSTALLER -y install php8.2 php8.2-{curl,apcu,intl,mbstring,opcache,pgsql,mysql,sqlite3,redis,xml,zip}
+      elif [ "$OMAKUB_OS_VERSION_ID" = "13" ]; then
+        sudo $INSTALLER -y install php php-{curl,apcu,intl,mbstring,opcache,pgsql,mysql,sqlite3,redis,xml,zip}
+      else
+        echo "Unsupported Debian version for PHP install."
       fi
       php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       php composer-setup.php --quiet && sudo mv composer.phar /usr/local/bin/composer
