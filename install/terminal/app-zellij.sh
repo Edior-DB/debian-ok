@@ -23,14 +23,6 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
     if [ -d "$HOME/.local/kitty.app/bin" ]; then
       export PATH="$HOME/.local/kitty.app/bin:$PATH"
-      # Persist PATH for future sessions
-      SHELL_RC="$HOME/.bashrc"
-      if [ -n "${ZSH_VERSION-}" ]; then
-        SHELL_RC="$HOME/.zshrc"
-      fi
-      if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
-        echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >> "$SHELL_RC"
-      fi
     fi
   fi
   # Always use the full path for kitty
@@ -58,6 +50,14 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   echo -e "#!/bin/bash\n$KITTY_CMD zellij \"\$@\"" > ~/.local/bin/zellij-in-kitty
   chmod +x ~/.local/bin/zellij-in-kitty
   echo "You can now run 'zellij-in-kitty' to launch zellij in kitty."
+  # Ensure kitty and zellij-in-kitty are in PATH for future sessions
+  SHELL_RC="$HOME/.bashrc"
+  if [ -n "${ZSH_VERSION-}" ]; then
+    SHELL_RC="$HOME/.zshrc"
+  fi
+  if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
+    echo 'export PATH="$HOME/.local/kitty.app/bin:$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
+  fi
 else
   mkdir -p ~/.local/bin
   echo -e '#!/bin/bash\ngnome-terminal -- zellij "$@"' > ~/.local/bin/zellij-in-gnome-terminal
@@ -65,11 +65,3 @@ else
   echo "You can now run 'zellij-in-gnome-terminal' to launch zellij in GNOME Terminal."
 fi
 
-# Ensure kitty and zellij-in-kitty are in PATH for future sessions
-SHELL_RC="$HOME/.bashrc"
-if [ -n "${ZSH_VERSION-}" ]; then
-  SHELL_RC="$HOME/.zshrc"
-fi
-if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
-  echo 'export PATH="$HOME/.local/kitty.app/bin:$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
-fi
