@@ -65,5 +65,11 @@ else
   echo "You can now run 'zellij-in-gnome-terminal' to launch zellij in GNOME Terminal."
 fi
 
-# Ensure kitty and zellij-in-kitty are in PATH for the current session
-export PATH="$HOME/.local/kitty.app/bin:$HOME/.local/bin:$PATH"
+# Ensure kitty and zellij-in-kitty are in PATH for future sessions
+SHELL_RC="$HOME/.bashrc"
+if [ -n "${ZSH_VERSION-}" ]; then
+  SHELL_RC="$HOME/.zshrc"
+fi
+if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
+  echo 'export PATH="$HOME/.local/kitty.app/bin:$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
+fi
