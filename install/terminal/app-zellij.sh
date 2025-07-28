@@ -31,6 +31,14 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
       fi
     fi
   fi
+  # Install kitty.desktop if not present
+  if [ -x "$KITTY_CMD" ]; then
+    DESKTOP_FILE="$HOME/.local/share/applications/kitty.desktop"
+    if [ ! -f "$DESKTOP_FILE" ]; then
+      mkdir -p "$HOME/.local/share/applications"
+      cp "$DEBIANOK_PATH/configs/kitty.desktop" "$DESKTOP_FILE"
+    fi
+  fi
   # Apply Chris Titus's visuals for kitty
   if [ -d "$HOME/.config/kitty" ] && [ ! -d "$HOME/.config/kitty-bak" ]; then
     cp -r "$HOME/.config/kitty" "$HOME/.config/kitty-bak"

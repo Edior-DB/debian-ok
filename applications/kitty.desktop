@@ -1,0 +1,13 @@
+#!/bin/bash
+# Create kitty.desktop launcher in the user's local applications directory
+mkdir -p "$HOME/.local/share/applications"
+cat > "$HOME/.local/share/applications/kitty.desktop" <<EOF
+[Desktop Entry]
+Name=Kitty
+Comment=Fast, feature-rich, GPU based terminal emulator
+Exec=zellij-in-kitty
+Icon=kitty
+Type=Application
+Categories=System;TerminalEmulator;
+StartupWMClass=kitty
+EOF
