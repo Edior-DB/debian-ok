@@ -21,7 +21,15 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   if ! command -v kitty >/dev/null 2>&1; then
     echo "Installing kitty..."
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-    [ -d ~/.local/kitty.app/bin ] && export PATH="$HOME/.local/kitty.app/bin:$PATH"
+    if [ -d "$HOME/.local/kitty.app/bin" ]; then
+      export PATH="$HOME/.local/kitty.app/bin:$PATH"
+      # Persist PATH for future sessions
+      SHELL_RC="$HOME/.bashrc"
+      [ -n "$ZSH_VERSION" ] && SHELL_RC="$HOME/.zshrc"
+      if ! grep -q 'kitty.app/bin' "$SHELL_RC"; then
+        echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >> "$SHELL_RC"
+      fi
+    fi
   fi
   # Apply Chris Titus's visuals for kitty
   if [ -d "$HOME/.config/kitty" ] && [ ! -d "$HOME/.config/kitty-bak" ]; then
@@ -31,7 +39,16 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   curl -sSLo "$HOME/.config/kitty/kitty.conf" "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/kitty/kitty.conf"
   curl -sSLo "$HOME/.config/kitty/nord.conf" "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/kitty/nord.conf"
   mkdir -p ~/.local/bin
-  echo -e '#!/bin/bash\nkitty zellij "$@"' > ~/.local/bin/zellij-in-kitty
+  # Use full path to kitty if not in PATH
+  if command -v kitty >/dev/null 2>&1; then
+    KITTY_CMD="kitty"
+  elif [ -x "$HOME/.local/kitty.app/bin/kitty" ]; then
+    KITTY_CMD="$HOME/.local/kitty.app/bin/kitty"
+  else
+    echo "Error: kitty not found after installation."
+    exit 1
+  fi
+  echo -e "#!/bin/bash\n$KITTY_CMD zellij \"\$@\"" > ~/.local/bin/zellij-in-kitty
   chmod +x ~/.local/bin/zellij-in-kitty
   echo "You can now run 'zellij-in-kitty' to launch zellij in kitty."
   else
