@@ -1,5 +1,10 @@
 # Install gnome-shell-extension-manager and pipx
-sudo $INSTALLER install -y gnome-shell-extension-manager pipx
+if [ "$OMAKUB_OS_ID" = "ubuntu" ] || [ "$OMAKUB_OS_ID" = "debian" ]; then
+  sudo $INSTALLER install -y gnome-shell-extension-manager pipx
+else
+  echo "Unsupported OS for Gnome extension manager installation."
+  exit 1
+fi
 pipx install gnome-extensions-cli --system-site-packages
 
 # Turn off default Ubuntu extensions (only if running on Ubuntu)

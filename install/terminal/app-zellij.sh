@@ -27,11 +27,10 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   echo -e '#!/bin/bash\nkitty zellij "$@"' > ~/.local/bin/zellij-in-kitty
   chmod +x ~/.local/bin/zellij-in-kitty
   echo "You can now run 'zellij-in-kitty' to launch zellij in kitty."
-else
+  else
   mkdir -p ~/.local/bin
   echo -e '#!/bin/bash\ngnome-terminal -- zellij "$@"' > ~/.local/bin/zellij-in-gnome-terminal
   chmod +x ~/.local/bin/zellij-in-gnome-terminal
   echo "You can now run 'zellij-in-gnome-terminal' to launch zellij in GNOME Terminal."
-fi
-
+  fi
 
