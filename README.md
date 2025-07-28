@@ -43,6 +43,16 @@ Debian-Ok supports **Debian 12+** only. All installer and desktop scripts have b
 
 Debian-Ok now separates core and optional apps. To install optional apps (like Docker, Neovim, Chrome, LibreOffice, etc.), launch the Omakub app after setup, or run the relevant script from the `install/terminal/optional/` or `install/desktop/optional/` directories.
 
+
+## Credits: Chris Titus Visuals and Configs
+
+This project uses and adapts visual and configuration files for Alacritty and Kitty terminals from Chris Titus's open source repositories:
+
+- [ChrisTitusTech/dwm-titus](https://github.com/ChrisTitusTech/dwm-titus) (Alacritty and Kitty config files)
+- [ChrisTitusTech/linutil](https://github.com/ChrisTitusTech/linutil) (setup scripts and configuration inspiration)
+
+The installer fetches and applies his Alacritty and Kitty themes and configuration files by default, while retaining Debian-Ok's own keybinds and other custom settings. Many thanks to Chris Titus for sharing his work with the community.
+
 **These changes were contributed by [GitHub Copilot](https://github.com/features/copilot) as part of a comprehensive cross-distro compatibility, idempotency, and robustness refactor (2025).**
 
 ## Contributing to the documentation
