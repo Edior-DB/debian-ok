@@ -33,12 +33,20 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
       fi
     fi
   fi
-  # Install kitty.desktop if not present
-  if [ -x "$KITTY_CMD" ]; then
+  # Initialize KITTY_CMD to avoid unbound variable error
+  KITTY_CMD=""
+  # Use full path to kitty if not in PATH
+  if command -v kitty >/dev/null 2>&1; then
+    KITTY_CMD="kitty"
+  elif [ -x "$HOME/.local/kitty.app/bin/kitty" ]; then
+    KITTY_CMD="$HOME/.local/kitty.app/bin/kitty"
+  fi
+  # Install kitty.desktop if not present and kitty is available
+  if [ -n "$KITTY_CMD" ] && [ -x "$KITTY_CMD" ]; then
     DESKTOP_FILE="$HOME/.local/share/applications/kitty.desktop"
     if [ ! -f "$DESKTOP_FILE" ]; then
       mkdir -p "$HOME/.local/share/applications"
-      cp "$DEBIANOK_PATH/configs/kitty.desktop" "$DESKTOP_FILE"
+      cp "$DEBIANOK_PATH/applications/kitty.desktop" "$DESKTOP_FILE"
     fi
   fi
   # Apply Chris Titus's visuals for kitty
