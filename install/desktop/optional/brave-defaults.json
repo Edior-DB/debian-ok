@@ -1,0 +1,30 @@
+{
+  "homepage": "https://www.debian.org/",
+  "search": {
+    "default": "DuckDuckGo",
+    "engines": ["DuckDuckGo", "Google", "Bing"]
+  },
+  "privacy": {
+    "block_third_party_cookies": true,
+    "send_do_not_track": true
+  },
+  "appearance": {
+    "theme": "dark"
+  },
+  "extensions": {
+    "enabled": [
+      {
+        "name": "uBlock Origin",
+        "id": "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+      },
+      {
+        "name": "Privacy Badger",
+        "id": "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
+      },
+      {
+        "name": "CleanURLs",
+        "id": "dhkplhfnhceodhffomolpfigojocbpcb"
+      }
+    ]
+  }
+}
