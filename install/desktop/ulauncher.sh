@@ -1,17 +1,13 @@
-if [ "$OMAKUB_OS_ID" = "debian" ]; then
-  cd /tmp
-  ULVER=$(curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest | grep 'tag_name' | cut -d"\"" -f4)
-  if [ -z "$ULVER" ]; then
-    echo "Error: Could not determine latest Ulauncher version."; exit 1; fi
-  if ! wget -O ulauncher.deb "https://github.com/Ulauncher/Ulauncher/releases/download/$ULVER/ulauncher_${ULVER#v}_all.deb"; then
-    echo "Error: Failed to download Ulauncher .deb."; exit 1; fi
-  if ! sudo apt install -y ./ulauncher.deb; then
-    echo "Error: Failed to install Ulauncher .deb."; exit 1; fi
-  rm ulauncher.deb
-  cd -
-else
-  echo "Unsupported OS for Ulauncher installation."; exit 1;
-fi
+cd /tmp
+ULVER=$(curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest | grep 'tag_name' | cut -d"\"" -f4)
+if [ -z "$ULVER" ]; then
+  echo "Error: Could not determine latest Ulauncher version."; exit 1; fi
+if ! wget -O ulauncher.deb "https://github.com/Ulauncher/Ulauncher/releases/download/$ULVER/ulauncher_${ULVER#v}_all.deb"; then
+  echo "Error: Failed to download Ulauncher .deb."; exit 1; fi
+if ! sudo apt install -y ./ulauncher.deb; then
+  echo "Error: Failed to install Ulauncher .deb."; exit 1; fi
+rm ulauncher.deb
+cd -
 
 # Start ulauncher to have it populate config before we overwrite
 mkdir -p ~/.config/autostart/
