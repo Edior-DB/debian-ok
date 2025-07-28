@@ -12,5 +12,10 @@ for installer in ~/.local/share/debian-ok/install/desktop/*.sh; do
   source $installer
 done
 
+# Offer to apply browser defaults before reboot
+if gum confirm "Apply default settings for Brave and Firefox browsers?"; then
+  source ~/.local/share/debian-ok/install/desktop/optional/apply-browser-defaults.sh
+fi
+
 # Logout to pickup changes
 gum confirm "Ready to reboot for all settings to take effect?" && sudo reboot
