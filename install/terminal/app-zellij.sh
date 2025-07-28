@@ -33,16 +33,10 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
       fi
     fi
   fi
-  # Initialize KITTY_CMD to avoid unbound variable error
-  KITTY_CMD=""
-  # Use full path to kitty if not in PATH
-  if command -v kitty >/dev/null 2>&1; then
-    KITTY_CMD="kitty"
-  elif [ -x "$HOME/.local/kitty.app/bin/kitty" ]; then
-    KITTY_CMD="$HOME/.local/kitty.app/bin/kitty"
-  fi
+  # Always use the full path for kitty
+  KITTY_CMD="$HOME/.local/kitty.app/bin/kitty"
   # Install kitty.desktop if not present and kitty is available
-  if [ -n "$KITTY_CMD" ] && [ -x "$KITTY_CMD" ]; then
+  if [ -x "$KITTY_CMD" ]; then
     DESKTOP_FILE="$HOME/.local/share/applications/kitty.desktop"
     if [ ! -f "$DESKTOP_FILE" ]; then
       mkdir -p "$HOME/.local/share/applications"
@@ -57,12 +51,7 @@ if gum confirm "Do you want to install and use kitty as the preferred terminal f
   curl -sSLo "$HOME/.config/kitty/kitty.conf" "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/kitty/kitty.conf"
   curl -sSLo "$HOME/.config/kitty/nord.conf" "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/kitty/nord.conf"
   mkdir -p ~/.local/bin
-  # Use full path to kitty if not in PATH
-  if command -v kitty >/dev/null 2>&1; then
-    KITTY_CMD="kitty"
-  elif [ -x "$HOME/.local/kitty.app/bin/kitty" ]; then
-    KITTY_CMD="$HOME/.local/kitty.app/bin/kitty"
-  else
+  if [ ! -x "$KITTY_CMD" ]; then
     echo "Error: kitty not found after installation."
     exit 1
   fi
