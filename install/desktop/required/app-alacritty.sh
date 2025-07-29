@@ -43,15 +43,6 @@ else
     cp ~/.local/share/debian-ok/themes/nord/alacritty.toml ~/.config/alacritty/theme.toml
 fi
 
-# Always set shell.program to bash (do not reference zellij)
-if [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "12" ]; then
-    # Debian 12 - Modify YAML file
-    sed -i.bak 's/^  program: ".*"/  program: bash/' ~/.config/alacritty/shared.yml
-else
-    # Debian 13+ - Modify TOML file
-    sed -i.bak 's/^program = ".*"/program = "bash"/' ~/.config/alacritty/shared.toml
-fi
-
 # Migrate config format if needed (only for TOML configs on Debian 13+)
 if [ "${DEBIANOK_DEBIAN_MAJOR:-}" != "12" ]; then
     alacritty migrate 2>/dev/null || true
