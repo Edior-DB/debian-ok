@@ -1,0 +1,8 @@
+# Used by the Activity.desktop app
+import:
+  - ~/.config/alacritty/pane.yml
+
+window:
+  dimensions:
+    columns: 121
+    lines: 40
