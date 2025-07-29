@@ -1,0 +1,81 @@
+[[keyboard.bindings]]
+key = "V"
+mods = "Super"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "S"
+mods = "Control|Shift"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Super"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+action = "PasteSelection"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+action = "Paste"
+
+# Scrolling
+[[keyboard.bindings]]
+key = "K"
+mods = "Control|Shift"
+action = "ScrollLineUp"
+
+[[keyboard.bindings]]
+key = "J"
+mods = "Control|Shift"
+action = "ScrollLineDown"
+
+[[keyboard.bindings]]
+key = "PageUp"
+mods = "Control|Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "PageDown"
+mods = "Control|Shift"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]]
+key = "Home"
+mods = "Control|Shift"
+action = "ScrollToTop"
+
+[[keyboard.bindings]]
+key = "End"
+mods = "Control|Shift"
+action = "ScrollToBottom"
+
+# Font size controls
+[[keyboard.bindings]]
+key = "Plus"
+mods = "Control|Shift"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control|Shift"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control|Shift"
+action = "ResetFontSize"
+
+# Fullscreen toggle
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"

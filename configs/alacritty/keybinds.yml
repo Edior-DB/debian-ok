@@ -8,8 +8,6 @@ key_bindings:
   - { key: Insert, mods: Shift, action: Paste }
 
   # Scrolling
-  - { key: Up, mods: Control|Shift, action: ScrollLineUp }
-  - { key: Down, mods: Control|Shift, action: ScrollLineDown }
   - { key: K, mods: Control|Shift, action: ScrollLineUp }
   - { key: J, mods: Control|Shift, action: ScrollLineDown }
   - { key: PageUp, mods: Control|Shift, action: ScrollPageUp }
@@ -18,9 +16,9 @@ key_bindings:
   - { key: End, mods: Control|Shift, action: ScrollToBottom }
 
   # Font size controls
-  - { key: Up, mods: Control|Shift, action: IncreaseFontSize }
-  - { key: Down, mods: Control|Shift, action: DecreaseFontSize }
-  - { key: BackSpace, mods: Control|Shift, action: ResetFontSize }
+  - { key: Plus, mods: Control|Shift, action: IncreaseFontSize }
+  - { key: Minus, mods: Control|Shift, action: DecreaseFontSize }
+  - { key: Key0, mods: Control|Shift, action: ResetFontSize }
 
   # Fullscreen toggle
   - { key: F11, action: ToggleFullscreen }
