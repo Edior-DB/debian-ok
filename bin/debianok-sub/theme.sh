@@ -2,8 +2,24 @@ THEME_NAMES=("Tokyo Night" "Catppuccin" "Nord" "Everforest" "Gruvbox" "Kanagawa"
 THEME=$(gum choose "${THEME_NAMES[@]}" "<< Back" --header "Choose your theme" --height 10 | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
 
 if [ -n "$THEME" ] && [ "$THEME" != "<<-back" ]; then
-  # Copy Alacritty theme config based on Debian version
-  if [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "12" ]; then
+  # Determine config format based on Alacritty version
+  ALACRITTY_VERSION=$(alacritty --version 2>/dev/null | awk '{print $2}')
+  USE_YAML_CONFIG=false
+  
+  if [ -n "$ALACRITTY_VERSION" ]; then
+    # Use YAML for Alacritty versions < 0.12, TOML for 0.12+
+    if [ "$(printf '%s\n' "$ALACRITTY_VERSION" "0.12.0" | sort -V | head -n1)" = "$ALACRITTY_VERSION" ] && [ "$ALACRITTY_VERSION" != "0.12.0" ]; then
+      USE_YAML_CONFIG=true
+    fi
+  else
+    # Fallback: if we can't detect version, use Debian version as guide
+    if [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "12" ]; then
+      USE_YAML_CONFIG=true
+    fi
+  fi
+  
+  # Copy Alacritty theme config based on detected version
+  if [ "$USE_YAML_CONFIG" = "true" ]; then
     cp $OMAKUB_PATH/themes/$THEME/alacritty.yml ~/.config/alacritty/theme.yml
   else
     cp $OMAKUB_PATH/themes/$THEME/alacritty.toml ~/.config/alacritty/theme.toml
