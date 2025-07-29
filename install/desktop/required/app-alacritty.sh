@@ -31,7 +31,7 @@ if gum confirm "Use Chris Titus's Alacritty config?"; then
     fi
 else
     # Use local configs, select old or new based on Alacritty version
-    if version_lt "$ALACRITTY_VERSION" "0.14.0"; then
+    if version_lt "$ALACRITTY_VERSION" "0.12.2"; then
         # Old local configs (pre-migration)
         cp ~/.local/share/debian-ok/configs/alacritty.old.toml ~/.config/alacritty/alacritty.toml
         cp ~/.local/share/debian-ok/configs/alacritty/shared.old.toml ~/.config/alacritty/shared.toml
