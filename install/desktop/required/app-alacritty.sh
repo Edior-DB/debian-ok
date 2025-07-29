@@ -26,6 +26,7 @@ if [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "12" ]; then
     cp ~/.local/share/debian-ok/configs/alacritty/btop.yml ~/.config/alacritty/btop.yml
     cp ~/.local/share/debian-ok/configs/alacritty/fonts/MesloLGS.yml ~/.config/alacritty/font.yml
     cp ~/.local/share/debian-ok/configs/alacritty/font-size.yml ~/.config/alacritty/font-size.yml
+    cp ~/.local/share/debian-ok/configs/alacritty/keybinds.yml ~/.config/alacritty/keybinds.yml
     cp ~/.local/share/debian-ok/themes/nord/alacritty.yml ~/.config/alacritty/theme.yml
 elif [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "13" ] && gum confirm "Use Chris Titus's Alacritty config?"; then
     # Debian 13 - Chris Titus config (TOML)

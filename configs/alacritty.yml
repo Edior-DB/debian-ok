@@ -1,6 +1,7 @@
-# Alacritty configuration for Debian 12 (v0.11)
+# Alacritty configuration for Debian 12 (v0.11) - Based on Chris Titus config
 import:
   - ~/.config/alacritty/theme.yml
   - ~/.config/alacritty/font.yml
   - ~/.config/alacritty/font-size.yml
   - ~/.config/alacritty/shared.yml
+  - ~/.config/alacritty/keybinds.yml
