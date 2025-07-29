@@ -30,26 +30,14 @@ if gum confirm "Use Chris Titus's Alacritty config?"; then
         curl -sSLo ~/.config/alacritty/keybinds.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/keybinds.toml"
     fi
 else
-    # Use local configs, select old or new based on Alacritty version
-    if version_lt "$ALACRITTY_VERSION" "0.12.2"; then
-        # Old local configs (pre-migration)
-        cp ~/.local/share/debian-ok/configs/alacritty.old.toml ~/.config/alacritty/alacritty.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/shared.old.toml ~/.config/alacritty/shared.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/pane.old.toml ~/.config/alacritty/pane.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/btop.old.toml ~/.config/alacritty/btop.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/fonts/MesloLGS.old.toml ~/.config/alacritty/font.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/font-size.old.toml ~/.config/alacritty/font-size.toml
-        cp ~/.local/share/debian-ok/themes/nord/alacritty.old.toml ~/.config/alacritty/theme.toml
-    else
-        # New local configs (main)
-        cp ~/.local/share/debian-ok/configs/alacritty.toml ~/.config/alacritty/alacritty.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/shared.toml ~/.config/alacritty/shared.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/pane.toml ~/.config/alacritty/pane.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/btop.toml ~/.config/alacritty/btop.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/fonts/MesloLGS.toml ~/.config/alacritty/font.toml
-        cp ~/.local/share/debian-ok/configs/alacritty/font-size.toml ~/.config/alacritty/font-size.toml
-        cp ~/.local/share/debian-ok/themes/nord/alacritty.toml ~/.config/alacritty/theme.toml
-    fi
+    # Use local configs (main)
+    cp ~/.local/share/debian-ok/configs/alacritty.toml ~/.config/alacritty/alacritty.toml
+    cp ~/.local/share/debian-ok/configs/alacritty/shared.toml ~/.config/alacritty/shared.toml
+    cp ~/.local/share/debian-ok/configs/alacritty/pane.toml ~/.config/alacritty/pane.toml
+    cp ~/.local/share/debian-ok/configs/alacritty/btop.toml ~/.config/alacritty/btop.toml
+    cp ~/.local/share/debian-ok/configs/alacritty/fonts/MesloLGS.toml ~/.config/alacritty/font.toml
+    cp ~/.local/share/debian-ok/configs/alacritty/font-size.toml ~/.config/alacritty/font-size.toml
+    cp ~/.local/share/debian-ok/themes/nord/alacritty.toml ~/.config/alacritty/theme.toml
 fi
 
 # Always set shell.program to bash in shared.toml (do not reference zellij)
