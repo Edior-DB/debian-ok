@@ -1,6 +1,8 @@
 import = [ 
-            "~/.config/alacritty/alacritty-titus.toml",
+            "~/.config/alacritty/theme.toml",
             "~/.config/alacritty/font.toml", 
             "~/.config/alacritty/font-size.toml", 
             "~/.config/alacritty/shared.toml" 
-        ]
+            "~/.config/alacritty/alacritty-titus.toml",
+            ]
+            
