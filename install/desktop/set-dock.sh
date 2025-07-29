@@ -14,6 +14,9 @@ fi
 if command -v alacritty >/dev/null 2>&1; then
 	apps+=("Alacritty.desktop")
 fi
+if command -v kitty >/dev/null 2>&1; then
+	apps+=("zkitty.desktop")
+fi
 if command -v nvim >/dev/null 2>&1; then
 	apps+=("Neovim.desktop")
 fi

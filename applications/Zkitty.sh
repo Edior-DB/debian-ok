@@ -6,7 +6,7 @@ cat > "$HOME/.local/share/applications/Zkitty.desktop" <<EOF
 Name=Zkitty
 Comment=Fast, feature-rich, GPU based terminal emulator (with zellij)
 Exec=zkitty
-Icon=kitty
+Icon=$HOME/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
 Type=Application
 Categories=System;TerminalEmulator;
 StartupWMClass=kitty
