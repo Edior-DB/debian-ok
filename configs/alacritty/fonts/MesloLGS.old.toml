@@ -1,0 +1,5 @@
+# Old MesloLGS font config for pre-0.14.0
+[font]
+normal.family = "MesloLGS Nerd Font Mono"
+normal.style = "Regular"
+size = 16.0

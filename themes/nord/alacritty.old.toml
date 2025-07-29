@@ -1,0 +1,4 @@
+# Old nord theme config for pre-0.14.0
+[colors]
+primary.background = "#2E3440"
+primary.foreground = "#D8DEE9"
