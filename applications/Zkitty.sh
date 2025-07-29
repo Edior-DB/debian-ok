@@ -1,7 +1,7 @@
 #!/bin/bash
 # Create Zkitty.desktop launcher in the user's local applications directory
 mkdir -p "$HOME/.local/share/applications"
-cat > "$HOME/.local/share/applications/Zkitty.desktop" <<EOF
+cat > "$HOME/.local/share/applications/zellij-in-kitty.desktop" <<EOF
 [Desktop Entry]
 Name=Zkitty
 Comment=Fast, feature-rich, GPU based terminal emulator (with zellij)
