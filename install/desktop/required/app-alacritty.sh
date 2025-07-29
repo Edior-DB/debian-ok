@@ -16,19 +16,11 @@ version_lt() {
 
 
 
-if gum confirm "Use Chris Titus's Alacritty config?"; then
-    # Use old config for Alacritty < 0.14.0, new config for >= 0.14.0
-    if version_lt "$ALACRITTY_VERSION" "0.14.0"; then
-        # Old config (pre-migration)
-        curl -sSLo ~/.config/alacritty/alacritty.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/bc9ad512674668b7713ec134d08d63200be8fcee/config/alacritty/alacritty.toml"
-        curl -sSLo ~/.config/alacritty/nordic.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/bc9ad512674668b7713ec134d08d63200be8fcee/config/alacritty/nordic.toml"
-        curl -sSLo ~/.config/alacritty/keybinds.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/bc9ad512674668b7713ec134d08d63200be8fcee/config/alacritty/keybinds.toml"
-    else
-        # New config (main branch)
-        curl -sSLo ~/.config/alacritty/alacritty.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/alacritty.toml"
-        curl -sSLo ~/.config/alacritty/nordic.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/nordic.toml"
-        curl -sSLo ~/.config/alacritty/keybinds.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/keybinds.toml"
-    fi
+
+if [ "${DEBIANOK_DEBIAN_MAJOR:-}" = "13" ] && gum confirm "Use Chris Titus's Alacritty config?"; then
+    curl -sSLo ~/.config/alacritty/alacritty.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/alacritty.toml"
+    curl -sSLo ~/.config/alacritty/nordic.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/nordic.toml"
+    curl -sSLo ~/.config/alacritty/keybinds.toml "https://github.com/ChrisTitusTech/dwm-titus/raw/main/config/alacritty/keybinds.toml"
 else
     # Use local configs (main)
     cp ~/.local/share/debian-ok/configs/alacritty.toml ~/.config/alacritty/alacritty.toml
