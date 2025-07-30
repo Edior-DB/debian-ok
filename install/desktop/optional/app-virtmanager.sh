@@ -1,13 +1,10 @@
 #!/bin/bash
-# Debian version check (only 12 supported, 13 not yet supported)
-if [ "$OMAKUB_OS_VERSION_ID" = "13" ]; then
-  echo "Debian 13 is not yet supported."
-  exit 1
-elif [ "$OMAKUB_OS_VERSION_ID" != "12" ]; then
-  echo "Unsupported Debian version for this installer. Only Debian 12 is supported."
+# Debian version check (supports Debian 12 and 13+)
+if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -lt 12 ]; then
+  echo "Unsupported Debian version for this installer. Debian 12 or higher is required."
   exit 1
 fi
-# Install virt-manager (Virtual Machine Manager) for Debian 12
+# Install virt-manager (Virtual Machine Manager)
 sudo $INSTALLER update
 sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
 echo "virt-manager and KVM packages installed successfully."
@@ -30,4 +27,3 @@ sudo modprobe vhost_net
 echo "vhost_net" | sudo tee -a /etc/modules
 
 echo "virt-manager and KVM setup complete. You may need to reboot for all changes to take effect."
-
