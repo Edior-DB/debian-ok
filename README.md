@@ -1,11 +1,31 @@
 # Debian-Omakub (Debian-Ok)
 
-> **Note:** This fork of Omakub is a heavily refactored and extended version of the original [Basecamp Omakub](https://github.com/basecamp/omakub). It is not fully tested and may contain bugs or incomplete features. Use at your own risk and please report issues.
+> **Debian-Ok** is a comprehensive, security-focused fork of Omakub, extensively refactored and enhanced for Debian 12+. This mature project features modern package management, intelligent conflict detection, cross-version compatibility, and robust error handling.
 
-Turn a fresh Debian 12 installation into a fully-configured, beautiful, and modern web development system by running a single command. Debian-Ok is an opinionated take on what Linux can be at its best, and is a direct fork of Omakub.
+Turn a fresh Debian 12 installation into a fully-configured, beautiful, and modern web development system by running a single command. Debian-Ok delivers an opinionated, reliable Linux experience with enterprise-grade security practices and intelligent installation management.
+
+
+## Major Improvements & Features
+
+### 🛡️ Security & Modern Package Management
+- **Modern APT keyring management** using `/etc/apt/keyrings/` with comprehensive cleanup of legacy locations
+- **Intelligent conflict detection** for VS Code/VSCodium with automatic Flatpak fallback
+- **Defensive programming** with existence checks before all file operations
+- **Secure GPG signature handling** preventing dual-signature conflicts
+
+### 🖥️ Advanced Terminal Configuration
+- **Cross-version Alacritty compatibility** supporting both v0.11 (YAML) and v0.12+ (TOML)
+- **User choice system** for keybindings with Chris Titus styling integration
+- **Smart version detection** with automatic format selection
+- **Complete theme restoration** including Nord theme with proper transparency
+
+### 🔧 Installation Intelligence
+- **Comprehensive environment detection** using `DEBIANOK_DEBIAN_MAJOR` standardization
+- **Idempotent installations** with robust duplicate detection
+- **Enhanced error handling** with detailed feedback and recovery options
+- **Future-proof design** removing artificial version restrictions
 
 ** The changes are not necessarily optimal - they just reflect the personal preferences of the author **
-
 ## Essential Changes from Basecamp's Original Omakub
 
 - **Debian 12 only:** This fork supports only Debian 12+ with robust OS detection and package handling. All Ubuntu support has been removed.
