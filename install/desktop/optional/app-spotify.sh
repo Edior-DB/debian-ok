@@ -1,10 +1,7 @@
 #!/bin/bash
-# Debian version check (only 12 supported, 13 not yet supported)
-if [ "$OMAKUB_OS_VERSION_ID" = "13" ]; then
-  echo "Debian 13 is not yet supported."
-  exit 1
-elif [ "$OMAKUB_OS_VERSION_ID" != "12" ]; then
-  echo "Unsupported Debian version for this installer. Only Debian 12 is supported."
+# Debian version check (supports Debian 12 and 13+)
+if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -lt 12 ]; then
+  echo "Unsupported Debian version for this installer. Debian 12 or higher is required."
   exit 1
 fi
 # Spotify for Debian 12 via Flatpak (recommended)

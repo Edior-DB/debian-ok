@@ -1,10 +1,7 @@
 # Install default programming languages
-if [[ -v OMAKUB_FIRST_RUN_LANGUAGES ]]; then
-  languages=$OMAKUB_FIRST_RUN_LANGUAGES
-else
-  AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Python" "Elixir" "Rust" "Java")
-  languages=$(gum choose "${AVAILABLE_LANGUAGES[@]}" --no-limit --height 10 --header "Select programming languages")
-fi
+
+AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Python" "Elixir" "Rust" "Java")
+languages=$(gum choose "${AVAILABLE_LANGUAGES[@]}" --no-limit --height 10 --header "Select programming languages")
 
 if [[ -n "$languages" ]]; then
   for language in $languages; do
@@ -21,12 +18,13 @@ if [[ -n "$languages" ]]; then
       mise use --global go@latest
       ;;
     PHP)
-      if [ "$OMAKUB_OS_VERSION_ID" = "12" ]; then
+      if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -eq 12 ]; then
         sudo $INSTALLER  install -y php8.2 php8.2-{curl,apcu,intl,mbstring,opcache,pgsql,mysql,sqlite3,redis,xml,zip}
-      elif [ "$OMAKUB_OS_VERSION_ID" = "13" ]; then
+      elif [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -ge 13 ]; then
         sudo $INSTALLER  install -y php php-{curl,apcu,intl,mbstring,opcache,pgsql,mysql,sqlite3,redis,xml,zip}
       else
-        echo "Unsupported Debian version for PHP install."
+        echo "Unsupported Debian version for PHP install. Debian 12 or higher required."
+        exit 1
       fi
       php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       php composer-setup.php --quiet && sudo mv composer.phar /usr/local/bin/composer
