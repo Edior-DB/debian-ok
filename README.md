@@ -28,7 +28,7 @@ Turn a fresh Debian 12 installation into a fully-configured, beautiful, and mode
 ** The changes are not necessarily optimal - they just reflect the personal preferences of the author **
 ## Essential Changes from Basecamp's Original Omakub
 
-- **Debian 12 & 13 only:** This fork supports only Debian 12+ with robust OS detection and package handling. All Ubuntu support has been removed.
+- **Debian 12 only:** This fork supports only Debian 12+ with robust OS detection and package handling. All Ubuntu support has been removed.
 - **Strict GNOME/GDM3 requirement:** Installer halts if not running under GNOME or GDM3.
 - **Core vs. Optional Apps:** Only core terminal tools and GNOME-tweaking scripts are installed by default. All other apps (including Docker, Neovim, Chrome, LibreOffice, etc.) are now optional and can be installed later via the DebianOk app or optional scripts.
 - **Fastfetch and Alacritty:** Now required and installed early in the process.
