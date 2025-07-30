@@ -5,6 +5,38 @@ if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -lt 12 ]; then
   exit 1
 fi
 
+# Check for VS Code conflict - if installed, use Flatpak for VSCodium
+if command -v code >/dev/null 2>&1 || [ -f /usr/bin/code ] || [ -f /usr/local/bin/code ]; then
+    echo "VS Code detected. Installing VSCodium via Flatpak to avoid conflicts..."
+    flatpak install -y flathub com.vscodium.codium
+    
+    # Create desktop entry for consistency
+    mkdir -p ~/.local/share/applications
+    cat > ~/.local/share/applications/codium-flatpak.desktop << 'DESKTOP_EOF'
+[Desktop Entry]
+Name=VSCodium (Flatpak)
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=flatpak run com.vscodium.codium %F
+Icon=com.vscodium.codium
+Type=Application
+StartupNotify=true
+StartupWMClass=VSCodium
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
+Keywords=vscodium;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=flatpak run com.vscodium.codium --new-window %F
+Icon=com.vscodium.codium
+DESKTOP_EOF
+    
+    echo "VSCodium installed via Flatpak due to VS Code conflict"
+    exit 0
+fi
+
 # Clean up any existing conflicting VSCodium GPG keys
 [ -f /usr/share/keyrings/vscodium-archive-keyring.gpg ] && sudo rm -f /usr/share/keyrings/vscodium-archive-keyring.gpg
 [ -f /etc/apt/keyrings/vscodium-archive-keyring.gpg ] && sudo rm -f /etc/apt/keyrings/vscodium-archive-keyring.gpg
