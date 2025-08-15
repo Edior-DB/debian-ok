@@ -1,7 +1,15 @@
 #!/bin/bash
-# Debian version check (supports Debian 12 and 13+)
+# Debian version check (supports Debian 12 only)
 if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -lt 12 ]; then
   echo "Unsupported Debian version for this installer. Debian 12 or higher is required."
+  exit 1
+fi
+
+# Block installation on Debian 13 due to package availability issues
+if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -ge 13 ]; then
+  echo "Installation blocked on Debian 13 due to package availability issues."
+  echo "The qemu-kvm package has been replaced with qemu-system-x86 which is currently unavailable."
+  echo "Please wait for the Debian 13 repositories to stabilize or install manually."
   exit 1
 fi
 # Install virt-manager (Virtual Machine Manager)
