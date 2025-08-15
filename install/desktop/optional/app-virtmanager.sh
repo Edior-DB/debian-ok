@@ -5,16 +5,24 @@ if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -lt 12 ]; then
   exit 1
 fi
 
-# Block installation on Debian 13 due to package availability issues
-if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -ge 13 ]; then
-  echo "Installation blocked on Debian 13 due to package availability issues."
-  echo "The qemu-kvm package has been replaced with qemu-system-x86 which is currently unavailable."
-  echo "Please wait for the Debian 13 repositories to stabilize or install manually."
-  exit 1
-fi
 # Install virt-manager (Virtual Machine Manager)
-sudo $INSTALLER update
-sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+# Clean package cache to resolve 404 errors on fresh Debian releases
+sudo apt clean
+sudo apt autoclean
+sudo $INSTALLER update --allow-releaseinfo-change
+
+# For Debian 13+, qemu-kvm is provided by qemu-system packages
+# Install packages with fallback handling
+if [ "${DEBIANOK_DEBIAN_MAJOR:-0}" -ge 13 ]; then
+    # Try qemu-system first (generic, lets system choose architecture)
+    sudo $INSTALLER install -y qemu-system libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager || {
+        echo "Primary installation failed, trying with qemu-kvm package name..."
+        sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+    }
+else
+    # Debian 12 and earlier use qemu-kvm directly
+    sudo $INSTALLER install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+fi
 echo "virt-manager and KVM packages installed successfully."
 
 # Add user to libvirt and libvirt-qemu groups
